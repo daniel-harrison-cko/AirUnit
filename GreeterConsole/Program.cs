@@ -7,9 +7,16 @@ namespace GreeterConsole
     {
         static void Main(string[] args)
         {
-            var greeter = new Greeter();
-            var greeting = greeter.Greet("Daniel");
-            Console.WriteLine(greeting);
+            if (args.Contains("--test"))
+            {
+                new GreeterTest().Run();
+            }
+            else
+            {
+                var greeter = new Greeter();
+                var greeting = greeter.Greet("Daniel");
+                Console.WriteLine(greeting);
+            }
         }
     }
 }
