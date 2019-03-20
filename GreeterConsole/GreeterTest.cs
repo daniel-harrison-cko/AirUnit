@@ -6,11 +6,11 @@ namespace GreeterConsole
     {
         public void Run()
         {
-            AssertThatGreetingContainsHello();
+            AssertThatGreetingContainsHelloIfHourIsNotProvided();
             AssertThatGreetingContainsName();
         }
 
-        private void AssertThatGreetingContainsHello()
+        private void AssertThatGreetingContainsHelloIfHourIsNotProvided()
         {
             var greeter = new Greeter();
             var greeting = greeter.Greet("Daniel");
