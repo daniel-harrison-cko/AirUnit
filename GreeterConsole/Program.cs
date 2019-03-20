@@ -14,7 +14,7 @@ namespace GreeterConsole
             else
             {
                 var greeter = new Greeter();
-                var greeting = greeter.Greet("Daniel");
+                var greeting = greeter.Greet("Daniel", DateTime.Now.Hour);
                 Console.WriteLine(greeting);
             }
         }
