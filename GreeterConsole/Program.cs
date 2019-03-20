@@ -14,6 +14,12 @@ namespace GreeterConsole
                     .Where(method => method.Name.StartsWith("Assert"))
                     .ToList();
                 greeterTestMethods.ForEach(method => method.Invoke(greeterTestFixture, null));
+
+                var calculatorTestFixture = Activator.CreateInstance<CalculatorTest>();
+                var calculatorTestMethods = typeof(CalculatorTest).GetMethods()
+                    .Where(method => method.Name.StartsWith("Assert"))
+                    .ToList();
+                calculatorTestMethods.ForEach(method => method.Invoke(calculatorTestFixture, null));
             }
             else
             {
