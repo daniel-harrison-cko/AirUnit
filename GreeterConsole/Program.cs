@@ -9,17 +9,22 @@ namespace GreeterConsole
         {
             if (args.Contains("--test"))
             {
-                var greeterTestFixture = Activator.CreateInstance<GreeterTest>();
-                var greeterTestMethods = typeof(GreeterTest).GetMethods()
-                    .Where(method => method.Name.StartsWith("Assert"))
-                    .ToList();
-                greeterTestMethods.ForEach(method => method.Invoke(greeterTestFixture, null));
+                var fixtureTypes = typeof(GreeterTest).Assembly
+                    .GetTypes().Where(type => type.Name.EndsWith("Test"));
 
-                var calculatorTestFixture = Activator.CreateInstance<CalculatorTest>();
-                var calculatorTestMethods = typeof(CalculatorTest).GetMethods()
-                    .Where(method => method.Name.StartsWith("Assert"))
-                    .ToList();
-                calculatorTestMethods.ForEach(method => method.Invoke(calculatorTestFixture, null));
+                foreach (var fixtureType in fixtureTypes)
+                {
+                    var fixture = Activator.CreateInstance(fixtureType);
+                    var methods = fixtureType.GetMethods();
+
+                    foreach (var method in methods)
+                    {
+                        if (method.Name.StartsWith("Assert"))
+                        {
+                            method.Invoke(fixture, null);
+                        }
+                    }
+                }
             }
             else
             {
