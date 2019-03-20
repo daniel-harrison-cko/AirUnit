@@ -8,6 +8,7 @@ namespace GreeterConsole
         {
             AssertThatGreetingContainsHelloIfHourIsNotProvided();
             AssertThatGreetingContainsGoodMorningIfHourIsLessThan12();
+            AssertThatGreetingContainsGoodAfternoonIfHourIsGreaterThanOrEqualTo12();
             AssertThatGreetingContainsName();
         }
 
@@ -25,6 +26,14 @@ namespace GreeterConsole
             var greeting = greeter.Greet("Daniel", hour: 11);
             if (!greeting.Contains("Good morning"))
                 throw new Exception($"Expected {greeting} to contain Good morning");
+        }
+
+        private void AssertThatGreetingContainsGoodAfternoonIfHourIsGreaterThanOrEqualTo12()
+        {
+            var greeter = new Greeter();
+            var greeting = greeter.Greet("Daniel", hour: 12);
+            if (!greeting.Contains("Good afternoon"))
+                throw new Exception($"Expected {greeting} to contain Good afternoon");
         }
 
         private void AssertThatGreetingContainsName()

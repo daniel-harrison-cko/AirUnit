@@ -13,6 +13,8 @@ namespace GreeterConsole
         {
             if (hour < 12)
                 return $"Good morning, {name}!";
+            else if (hour >= 12)
+                return $"Good afternoon, {name}!";
             
             return Greet(name);
         }
