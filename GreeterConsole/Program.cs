@@ -9,21 +9,13 @@ namespace GreeterConsole
         {
             if (args.Contains("--test"))
             {
-                var fixtureTypes = typeof(GreeterTest).Assembly
-                    .GetTypes().Where(type => type.Name.EndsWith("Test"));
-
-                foreach (var fixtureType in fixtureTypes)
+                var assembly = typeof(GreeterTest).Assembly;
+                var discoverer = new Discoverer();
+                var fixtures = discoverer.Discover(assembly);
+                
+                foreach (var fixture in fixtures)
                 {
-                    var fixture = Activator.CreateInstance(fixtureType);
-                    var methods = fixtureType.GetMethods();
-
-                    foreach (var method in methods)
-                    {
-                        if (method.Name.StartsWith("Assert"))
-                        {
-                            method.Invoke(fixture, null);
-                        }
-                    }
+                    fixture.Run();
                 }
             }
             else
