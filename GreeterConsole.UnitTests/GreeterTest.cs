@@ -1,4 +1,5 @@
 using System;
+using AirUnit.Assertions;
 
 namespace GreeterConsole
 {
@@ -9,29 +10,25 @@ namespace GreeterConsole
         public void AssertThatGreetingContainsHelloIfHourIsNotProvided()
         {
             var greeting = _greeter.Greet("Daniel");
-            if (!greeting.Contains("Hello"))
-                throw new Exception($"Expected {greeting} to contain Hello");
+            Assert.Contains("Hello", greeting);
         }
 
         public void AssertThatGreetingContainsGoodMorningIfHourIsLessThan12()
         {
             var greeting = _greeter.Greet("Daniel", hour: 11);
-            if (!greeting.Contains("Good morning"))
-                throw new Exception($"Expected {greeting} to contain Good morning");
+            Assert.Contains("Good morning", greeting);
         }
 
         public void AssertThatGreetingContainsGoodAfternoonIfHourIsGreaterThanOrEqualTo12()
         {
             var greeting = _greeter.Greet("Daniel", hour: 12);
-            if (!greeting.Contains("Good afternoon"))
-                throw new Exception($"Expected {greeting} to contain Good afternoon");
+            Assert.Contains("Good afternoon", greeting);
         }
 
         public void AssertThatGreetingContainsName()
         {
             var greeting = _greeter.Greet("Daniel");
-            if (!greeting.Contains("Daniel"))
-                throw new Exception($"Expected {greeting} to contain Daniel");
+            Assert.Contains("Daniel", greeting);
         }
     }
 }

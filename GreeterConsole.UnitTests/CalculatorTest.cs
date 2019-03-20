@@ -1,4 +1,5 @@
 using System;
+using AirUnit.Assertions;
 
 namespace GreeterConsole
 {
@@ -8,8 +9,7 @@ namespace GreeterConsole
         {
             var calculator = new Calculator();
             var sum = calculator.Add(5, 5);
-            if (sum != 10)
-                throw new Exception($"Expected {sum} to be 10");
+            Assert.Equals(10, sum);
         }
     }
 }

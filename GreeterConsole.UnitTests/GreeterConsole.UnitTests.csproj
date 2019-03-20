@@ -2,6 +2,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\GreeterConsole\GreeterConsole.csproj" />
+    <ProjectReference Include="..\AirUnit.Assertions\AirUnit.Assertions.csproj" />
   </ItemGroup>
 
   <PropertyGroup>
