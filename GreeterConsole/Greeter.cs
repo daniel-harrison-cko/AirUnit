@@ -8,5 +8,13 @@ namespace GreeterConsole
         {
             return $"Hello, {name}!";
         }
+
+        public string Greet(string name, int hour)
+        {
+            if (hour < 12)
+                return $"Good morning, {name}!";
+            
+            return Greet(name);
+        }
     }
 }
