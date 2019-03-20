@@ -23,7 +23,18 @@ namespace AirUnit.TestRunner
         public void Run()
         {
             var fixture = Activator.CreateInstance(_type);
-            _tests.ForEach(test => test.Invoke(fixture, null));
+            _tests.ForEach(test => {
+                try
+                {
+                    test.Invoke(fixture, null);
+                    Console.WriteLine($"PASS: {_type.Name}.{test.Name}");
+                }
+                catch (Exception e)
+                {
+                    Console.WriteLine($"FAIL: {_type.Name}.{test.Name}");
+                    Console.WriteLine(e);
+                }
+            });
         }
     }
 }
