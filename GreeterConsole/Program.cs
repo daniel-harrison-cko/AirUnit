@@ -9,7 +9,11 @@ namespace GreeterConsole
         {
             if (args.Contains("--test"))
             {
-                new GreeterTest().Run();
+                var greeterTestFixture = Activator.CreateInstance<GreeterTest>();
+                var greeterTestMethods = typeof(GreeterTest).GetMethods()
+                    .Where(method => method.Name.StartsWith("Assert"))
+                    .ToList();
+                greeterTestMethods.ForEach(method => method.Invoke(greeterTestFixture, null));
             }
             else
             {
