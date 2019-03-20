@@ -2,7 +2,7 @@ using System;
 
 namespace GreeterConsole
 {
-    class CalculatorTest
+    public class CalculatorTest
     {
         public void AssertThat5Plus5Equals10()
         {

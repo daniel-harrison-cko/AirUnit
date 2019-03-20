@@ -2,7 +2,7 @@ using System;
 
 namespace GreeterConsole
 {
-    class Greeter
+    public class Greeter
     {
         public string Greet(string name)
         {

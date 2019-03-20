@@ -7,7 +7,7 @@ namespace AirUnit.TestRunner
     {
         static void Main(string[] args)
         {
-            var assembly = Assembly.LoadFile(args[0]);
+            var assembly = Assembly.LoadFrom(args[0]);
             var discoverer = new Discoverer();
             var fixtures = discoverer.Discover(assembly);
             
