@@ -15,5 +15,11 @@ namespace AirUnit.Assertions
             if (expected != actual)
                 throw new Exception($"Expected {expected} to be {actual}");
         }
+
+        public static void True(bool test)
+        {
+            if (!test)
+                throw new Exception($"Expected true but was false");
+        }
     }
 }

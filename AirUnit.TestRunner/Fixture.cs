@@ -5,7 +5,7 @@ using System.Reflection;
 
 namespace AirUnit.TestRunner
 {
-    class Fixture
+    public class Fixture
     {
         private readonly Type _type;
         private readonly List<MethodInfo> _tests = new List<MethodInfo>();
