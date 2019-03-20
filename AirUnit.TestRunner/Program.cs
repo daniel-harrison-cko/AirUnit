@@ -13,7 +13,7 @@ namespace AirUnit.TestRunner
             
             foreach (var fixture in fixtures)
             {
-                fixture.Run();
+                fixture.Run(new ConsoleOutput());
             }
         }
     }
